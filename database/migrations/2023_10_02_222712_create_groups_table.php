@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateListsTable extends Migration
+class CreateGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lists', function (Blueprint $table) {
+        Schema::create('groups', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('listing_user_id');
-            $table->string('list_name');
+            $table->unsignedBigInteger('grouping_user_id');
+            $table->string('group_name');
             $table->timestamps();
 
-            $table->foreign('listing_user_id')->references('id')->on('users');
+            $table->foreign('grouping_user_id')->references('id')->on('users');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lists');
+        Schema::dropIfExists('groups');
     }
 }
