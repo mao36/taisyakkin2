@@ -15,7 +15,11 @@ class CreateListsTable extends Migration
     {
         Schema::create('lists', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('listing_user_id');
+            $table->string('list_name');
             $table->timestamps();
+
+            $table->foreign('listing_user_id')->references('id')->on('users');
         });
     }
 
