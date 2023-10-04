@@ -14,9 +14,9 @@ class CreateBelongsTable extends Migration
     public function up()
     {
         Schema::create('belongs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('group_id');
-            $table->unsignedBigInteger('belonged_user_id');
+            $table->increments('id');
+            $table->unsignedInteger('group_id');
+            $table->unsignedInteger('belonged_user_id');
             $table->timestamps();
             $table->dropColumn('updated_at');
 
@@ -33,5 +33,6 @@ class CreateBelongsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('belongs');
+        Schema::dropIfExists('users');
     }
 }

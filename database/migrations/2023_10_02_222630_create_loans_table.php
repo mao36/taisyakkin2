@@ -14,11 +14,11 @@ class CreateLoansTable extends Migration
     public function up()
     {
         Schema::create('loans', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('lending_user_id');
-            $table->unsignedBigInteger('borrowed_user_id');
+            $table->increments('id');
+            $table->unsignedInteger('lending_user_id');
+            $table->unsignedInteger('borrowed_user_id');
             $table->string('content');
-            $table->unsignedBigInteger('amount');
+            $table->unsignedInteger('amount');
             $table->date('lending_on')->nullable();
             $table->date('due_on')->nullable();
             $table->date('repaid_on')->nullable();
@@ -37,5 +37,6 @@ class CreateLoansTable extends Migration
     public function down()
     {
         Schema::dropIfExists('loans');
+        Schema::dropIfExists('users');
     }
 }
